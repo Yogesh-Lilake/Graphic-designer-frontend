@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { theme } from "@/constants/theme";
 
+import Navbar from "../../components/navigation/Navbar/";
+
 /**
  * Main application layout.
  *
@@ -13,6 +15,7 @@ import { theme } from "@/constants/theme";
 function MainLayout() {
     return (
         <div className={theme.page}>
+            <Navbar />
             <main className="flex-1">
                 <Outlet />
             </main>
