@@ -1,5 +1,5 @@
 import NavItem from "./NavItem";
-import { NAVIGATION } from "../constants/navigation";
+import { NAVIGATION } from "@/constants/navigation";
 import { NAVBAR } from "../constants/navbarConfig";
 
 /**
@@ -17,15 +17,15 @@ function DesktopMenu() {
             aria-label={NAVBAR.desktopAriaLabel}
             className="
                 hidden
-                lg:flex
+                xl:flex
 
-                flex-1
+                xl:flex-1
 
-                items-center
-                justify-center
+                xl:items-center
+                xl:justify-center
 
-                gap-8
-                xl:gap-10
+                xl:gap-5
+                2xl:gap-7
             "
         >
             {NAVIGATION.map((item) => (

@@ -7,14 +7,14 @@ import { NavLink } from "react-router-dom";
  * active state styling and animated underline.
  *
  * @param {Object} props
- * @param {{id:number,label:string,path:string}} props.item
+ * @param {{id:number,label:string,href:string}} props.item
  *
  * @returns {JSX.Element}
  */
 function NavItem({ item }) {
     return (
         <NavLink
-            to={item.path}
+            to={item.href}
             className={({ isActive }) => `
                 group
                 relative

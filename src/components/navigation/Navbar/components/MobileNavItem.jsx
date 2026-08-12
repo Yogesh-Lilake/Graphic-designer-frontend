@@ -8,7 +8,7 @@ import { ChevronRight } from "lucide-react";
  * inside the mobile drawer.
  *
  * @param {Object} props
- * @param {{id:number,label:string,path:string}} props.item
+ * @param {{id:number,label:string,href:string}} props.item
  * @param {Function} props.onClick
  *
  * @returns {JSX.Element}
@@ -16,7 +16,7 @@ import { ChevronRight } from "lucide-react";
 function MobileNavItem({ item, onClick }) {
     return (
         <NavLink
-            to={item.path}
+            to={item.href}
             onClick={onClick}
             className={({ isActive }) => `
                 group

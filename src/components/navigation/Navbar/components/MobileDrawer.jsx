@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight, X } from "lucide-react";
 
 import MobileNavItem from "./MobileNavItem";
-import { NAVIGATION } from "../constants/navigation";
+import { NAVIGATION } from "@/constants/navigation";
 import { NAVBAR } from "../constants/navbarConfig";
 
 /**
@@ -161,6 +161,7 @@ function MobileDrawer({
                     aria-label={NAVBAR.mobileAriaLabel}
                     className="
                         flex-1
+                        theme-scrollbar
                         overflow-y-auto
 
                         space-y-3

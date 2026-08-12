@@ -1,14 +1,18 @@
 /**
- * Primary navigation configuration.
+ * Primary website configuration.
  *
+ * Single source of truth for all primary navigation links.
+ * 
  * Used by:
- * - DesktopMenu
- * - MobileDrawer
+ * - Navbar
+ * - Mobile Navigation
+ * - Footer Quick Links
+ * - Sitemap
  *
  * @type {Array<{
  *   id:number,
  *   label:string,
- *   path:string
+ *   href:string
  * }>}
  */
 
@@ -16,46 +20,46 @@ export const NAVIGATION = [
     {
         id: 1,
         label: "Home",
-        path: "/"
+        href: "/"
     },
     {
         id: 2,
         label: "About",
-        path: "/about"
+        href: "/about"
     },
     {
         id: 3,
         label: "Portfolio",
-        path: "/portfolio"
+        href: "/portfolio"
     },
     {
         id: 4,
         label: "Case Studies",
-        path: "/case-studies"
+        href: "/case-studies"
     },
     {
         id: 5,
         label: "Services",
-        path: "/services"
+        href: "/services"
     },
     {
         id: 6,
         label: "Pricing",
-        path: "/pricing"
+        href: "/pricing"
     },
     {
         id: 7,
         label: "Blog",
-        path: "/blog"
+        href: "/blog"
     },
     {
         id: 8,
         label: "Resources",
-        path: "/resources"
+        href: "/resources"
     },
     {
         id: 9,
         label: "Contact",
-        path: "/contact"
+        href: "/contact"
     }
 ];

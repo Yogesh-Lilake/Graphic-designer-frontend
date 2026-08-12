@@ -20,7 +20,8 @@ function Logo() {
                 group
                 flex
                 items-center
-                gap-4
+                gap-3
+                sm:gap-4
                 shrink-0
                 select-none
             "
@@ -29,7 +30,7 @@ function Logo() {
             <div
                 className="
                     overflow-hidden
-                    rounded-2xl
+                    rounded-xl
                     border
                     border-[var(--border)]
                     bg-[var(--bg-surface)]
@@ -46,16 +47,16 @@ function Logo() {
                     src={logo}
                     alt={BRAND.logoAlt}
                     className="
-                        h-11
-                        w-11
-                        rounded-xl
+                        h-10
+                        w-10
+                        rounded-lg
                         object-cover
 
-                        sm:h-12
-                        sm:w-12
+                        sm:h-11
+                        sm:w-11
 
-                        md:h-14
-                        md:w-14
+                        md:h-12
+                        md:w-12
                     "
                 />
             </div>
@@ -64,11 +65,14 @@ function Logo() {
             <div className="flex flex-col leading-none">
                 <h1
                     className="
+                        truncate
                         font-bold
                         uppercase
                         tracking-[0.08em]
 
-                        text-[22px]
+                        text-[20px]
+                        sm:text-[21px]
+                        xl:text-[22px]
                         text-[color:var(--text-primary)]
 
                         transition-colors
@@ -84,10 +88,12 @@ function Logo() {
                     className="
                         mt-1
 
-                        text-[11px]
+                        text-[10px]
+                        sm:text-[11px]
                         font-medium
                         uppercase
-                        tracking-[0.45em]
+                        tracking-[0.38em]
+                        sm:tracking-[0.45em]
 
                         text-[color:var(--text-muted)]
                     "
