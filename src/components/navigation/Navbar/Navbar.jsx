@@ -1,5 +1,7 @@
 import { useRef } from "react";
 
+import { theme } from "@/constants/theme";
+
 import Logo from "@/shared/components/Logo";
 import DesktopMenu from "./components/DesktopMenu";
 import CTAButton from "./components/CTAButton";
@@ -11,6 +13,7 @@ import useEscapeKey from "./hooks/useEscapeKey";
 import useOutsideClick from "./hooks/useOutsideClick";
 import useBodyScrollLock from "./hooks/useBodyScrollLock";
 import useCloseOnDesktop from "./hooks/useCloseOnDesktop";
+import useNavbarScroll from "./hooks/useNavbarScroll";
 
 /**
  * Global navigation component.
@@ -20,6 +23,7 @@ import useCloseOnDesktop from "./hooks/useCloseOnDesktop";
  * - Controls the mobile drawer state.
  * - Handles accessibility intersections.
  * - Coordinated navbar-related behaviour hooks.
+ * - Controls navbar visibility based on scroll direction.
  * - Provide the responsive breakpoint between
  *   mobile/tablet navigation and desktop navigation.
  * 
@@ -33,6 +37,18 @@ import useCloseOnDesktop from "./hooks/useCloseOnDesktop";
  * - Desktop navigation
  * - Desktop CTA
  *
+ * Scroll behaviour:
+ *
+ * - At page top -> visible.
+ * - Scrolling down -> hides.
+ * - Scrolling up -> appears.
+ * - Mobile drawer open -> always visible.
+ * 
+ * Motion:
+ *
+ * - Uses the shared theme transition configuration.
+ * - Animates only the transform property.
+ * 
  * This prevents the nine primary navigation links
  * from becoming cramped on smaller laptop widths.
  * 
@@ -50,6 +66,19 @@ function Navbar() {
         closeMenu,
     } = useMobileMenu();
 
+    // Navbar Visibility
+    const isVisible = useNavbarScroll();
+
+    /*
+     * Keep the navbar visible while the mobile
+     * navigation drawer is open.
+     *
+     * This prevents the navigation controls from
+     * disappearing while the user is interacting
+     * with the drawer.
+     */
+    const isNavbarVisible = isVisible || isOpen;
+
     // Drawer reference
     const drawerRef = useRef(null);
 
@@ -60,7 +89,14 @@ function Navbar() {
     useCloseOnDesktop(isOpen, closeMenu);
 
     return (
-        <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[color:rgba(9,9,11,0.8)] backdrop-blur-md flex w-full items-center justify-center">
+        <header className={`sticky top-0 z-50 border-b border-[var(--border)] bg-[color:rgba(9,9,11,0.8)] backdrop-blur-md flex w-full items-center justify-center 
+                transition-transform
+                ${theme.transition}
+
+                ${isNavbarVisible
+                    ? "translate-y-0"
+                    : "-translate-y-full"
+                }`}>
             <div className="mx-auto flex h-20 w-full max-w-[1400px] items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 xl:h-24 xl:px-10 2xl:px-12">
 
                 {/* =======================
@@ -100,7 +136,7 @@ function Navbar() {
                 ================================== */}
 
                 <div
-                    className="xl-hidden"    
+                    className="xl:hidden"    
                 >
                     <MobileMenuButton
                         isOpen={isOpen}

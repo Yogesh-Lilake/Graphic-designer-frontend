@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { theme } from "@/constants/theme";
 
+import ScrollProgress from "@/components/common/ScrollProgress";
 import Navbar from "../../components/navigation/Navbar/";
 import Footer from "../../components/navigation/Footer/";
 
@@ -13,10 +14,14 @@ import Footer from "../../components/navigation/Footer/";
  * 
  * Provides the global structure:
  *
+ * ScrollProgress
  * Navbar
  * Main Content
  * Footer
  *
+ * ScrollProgress is mounted here instead of individual
+ * pages so it automatically works across every route.
+ * 
  * `flex-1` ensures the main content occupies
  * the available vertical space and allows the
  * footer to remain at the bottom on short pages.
@@ -26,6 +31,9 @@ import Footer from "../../components/navigation/Footer/";
 function MainLayout() {
     return (
         <div className={theme.page}>
+
+            {/* Global Scroll Progress*/}
+            <ScrollProgress />
 
             {/* Global Navbar */}
             <Navbar />

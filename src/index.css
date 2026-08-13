@@ -56,13 +56,45 @@
     );
 
   --button-shadow:
-    0 8px 24px rgba(124,58,237,.28);
+    0 8px 24px rgba(124, 58, 237, .28);
 
   --button-shadow-hover:
-    0 14px 34px rgba(124,58,237,.42);
+    0 14px 34px rgba(124, 58, 237, .42);
 
 
-  /* Scrollbar */  
+  /* =======================================================
+     MOTION
+  ======================================================= */
+
+  /*
+   * Shared application transition duration.
+   *
+   * Used by:
+   * - Navbar
+   * - Buttons
+   * - Cards
+   * - Menus
+   * - Interactive UI
+   */
+
+  --transition-duration: 300ms;
+
+
+  /*
+   * Shared application easing.
+   *
+   * Provides a smooth acceleration/deceleration
+   * suitable for general UI interactions.
+   */
+
+  --transition-easing:
+    cubic-bezier(0.4, 0, 0.2, 1);
+
+
+  /* =======================================================
+     SCROLLBAR
+  ======================================================= */
+
   --scrollbar-width: 7px;
 
   --scrollbar-track: var(--bg-main);
@@ -71,7 +103,25 @@
 
   --scrollbar-thumb-hover: var(--color-secondary);
 
+
+  /* =======================================================
+     SCROLL PROGRESS
+  ======================================================= */
+
+  --scroll-progress-height: 3px;
+
+  --scroll-progress-gradient:
+    linear-gradient(
+      90deg,
+      var(--color-primary) 0%,
+      var(--color-secondary) 55%,
+      var(--color-accent) 100%
+    );
+
+  --scroll-progress-shadow:
+    0 0 10px rgba(124, 58, 237, .45);
 }
+
 
 /* ======================================
   GLOBAL BASE
@@ -97,7 +147,7 @@
     font-family: var(--font-body);
     overflow-x: hidden;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiassed;
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
@@ -126,6 +176,33 @@
   ol {
     list-style: none;
   }
+}
+
+
+/* =========================================================
+   SHARED MOTION
+========================================================= */
+
+/*
+ * Global reusable transition configuration.
+ *
+ * Components decide WHICH property should animate.
+ *
+ * Example:
+ *
+ * transition-transform theme-transition
+ *
+ * or:
+ *
+ * theme-transition
+ *
+ * The duration and easing are controlled centrally
+ * through the design tokens above.
+ */
+
+.theme-transition {
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-easing);
 }
 
 
@@ -173,7 +250,6 @@
 
 .theme-scrollbar::-webkit-scrollbar {
   width: var(--scrollbar-width);
-
   height: var(--scrollbar-width);
 }
 
@@ -219,4 +295,47 @@
 
 .theme-scrollbar::-webkit-scrollbar-corner {
   background: var(--scrollbar-track);
+}
+
+
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+/*
+ * Global top-of-page scroll progress indicator.
+ *
+ * The component handles behaviour.
+ * Visual styling remains centralized in the
+ * application design system.
+ *
+ * Performance:
+ *
+ * - transform instead of width
+ * - requestAnimationFrame
+ * - will-change: transform
+ * - no React state updates during scrolling
+ */
+
+.scroll-progress {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: var(--scroll-progress-height);
+
+  z-index: 9999;
+
+  pointer-events: none;
+
+  transform: scaleX(0);
+  transform-origin: left center;
+
+  background: var(--scroll-progress-gradient);
+
+  box-shadow: var(--scroll-progress-shadow);
+
+  will-change: transform;
 }

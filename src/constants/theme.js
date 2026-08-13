@@ -22,8 +22,17 @@ export const theme = {
   /** Default button border radius */
   buttonRadius: "rounded-full",
 
-  /** Standard transition */
-  transition: "transition-all duration-300",
+  /**
+   * Shared application transition.
+   *
+   * Components should combine this with a
+   * property-specific Tailwind utility when required.
+   *
+   * Example:
+   *
+   * `${theme.transition} transition-transform`
+   */
+  transition: "theme-transition",
 
   /** Default shadow */
   shadow: "shadow-2xl",
