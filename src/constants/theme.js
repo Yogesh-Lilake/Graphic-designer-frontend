@@ -11,7 +11,7 @@ export const theme = {
   page: "min-h-screen flex flex-col",
 
   /** Maximum content width */
-  container: "max-w-7xl mx-auto px-6 lg:px-8",
+  container: "w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10",
 
   /** Standard section spacing */
   section: "py-28",

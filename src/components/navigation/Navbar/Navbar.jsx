@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import Logo from "./components/Logo";
+import Logo from "@/shared/components/Logo";
 import DesktopMenu from "./components/DesktopMenu";
 import CTAButton from "./components/CTAButton";
 import MobileMenuButton from "./components/MobileMenuButton";

@@ -4,11 +4,20 @@ import logo from "@/assets/images/brand/logo.png";
 import { BRAND } from "@/constants/brand";
 
 /**
- * Brand logo component.
- * 
- * Displays the application logo together with the brand name and tagline.
- *  
- * @returns {JSZ.Element} Brand logo. 
+ * Shared brand logo component.
+ *
+ * Responsible only for rendering the
+ * application's visual brand identity.
+ *
+ * Used by:
+ * - Navbar
+ * - FooterBrand
+ * - Future shared layouts/components
+ *
+ * Brand content is provided by:
+ * - constants/brand.js
+ *
+ * @returns {JSX.Element} Shared brand logo.
  */
 
 function Logo() {
@@ -62,7 +71,7 @@ function Logo() {
             </div>
 
             {/* Brand */}
-            <div className="flex flex-col leading-none">
+            <div className="flex min-w-0 flex-col leading-none">
                 <h1
                     className="
                         truncate
