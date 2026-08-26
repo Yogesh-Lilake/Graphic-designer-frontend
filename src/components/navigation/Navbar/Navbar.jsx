@@ -30,10 +30,12 @@ import useNavbarScroll from "./hooks/useNavbarScroll";
  *  * Responsive strategy:
  *
  * < 1280px
+ * - Logo
  * - Mobile menu button
  * - Mobile drawer
  *
  * >= 1280px
+ * - Logo
  * - Desktop navigation
  * - Desktop CTA
  *

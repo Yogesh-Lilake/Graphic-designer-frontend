@@ -29,7 +29,6 @@ function MobileMenuButton({
             aria-controls={NAVBAR.mobileMenuId}
             onClick={toggleMenu}
             className="
-                lg:hidden
 
                 flex
                 items-center

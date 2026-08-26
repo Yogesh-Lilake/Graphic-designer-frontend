@@ -15,7 +15,7 @@ import { BREAKPOINTS } from "@/constants/breakpoints";
 function useCloseOnDesktop(
     isOpen,
     closeMenu,
-    breakpoint = BREAKPOINTS.lg,
+    breakpoint = BREAKPOINTS.xl,
 ) {
     useEffect(() => {
         if (!isOpen) {
