@@ -1,0 +1,213 @@
+/**
+ * =========================================================
+ * GLOBAL MOTION IMPLEMENTATION
+ * =========================================================
+ *
+ * This file contains reusable CSS motion primitives.
+ *
+ * Ownership:
+ *
+ * motionTokens.css
+ *      |
+ * Motion values
+ *
+ * motion.css
+ *      |
+ * Motion implementation
+ *
+ * React animation components
+ *      |
+ * Developer-facing API
+ * =========================================================
+ */
+
+
+/* =========================================================
+   SHARED TRANSITION
+========================================================= */
+
+.theme-transition {
+  transition-duration:
+    var(--motion-normal);
+
+  transition-timing-function:
+    var(--ease-standard);
+}
+
+
+/* =========================================================
+   FADE IN
+========================================================= */
+
+.motion-fade-in {
+  opacity: 0;
+
+  transform:
+    translate3d(
+      var(--motion-from-x, 0),
+      var(--motion-from-y, 0),
+      0
+    );
+
+  animation:
+    motion-fade-in
+    var(--motion-duration, var(--motion-slow))
+    var(--ease-enter)
+    var(--motion-stagger-delay, var(--motion-delay, 0ms))
+    both;
+}
+
+
+@keyframes motion-fade-in {
+
+  from {
+    opacity: var(--motion-opacity-hidden);
+
+    transform:
+      translate3d(
+        var(--motion-from-x, 0),
+        var(--motion-from-y, 0),
+        0
+      );
+  }
+
+  to {
+    opacity: var(--motion-opacity-visible);
+
+    transform:
+      translate3d(0, 0, 0);
+  }
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.motion-reveal {
+  opacity: 0;
+
+  transform:
+    translate3d(
+      var(--motion-from-x, 0),
+      var(--motion-from-y, 0),
+      0
+    );
+
+  transition:
+    opacity
+      var(--motion-duration, var(--motion-slow))
+      var(--ease-enter)
+      var(--motion-stagger-delay, var(--motion-delay, 0ms)),
+
+    transform
+      var(--motion-duration, var(--motion-slow))
+      var(--ease-enter)
+      var(--motion-stagger-delay, var(--motion-delay, 0ms));
+}
+
+
+.motion-reveal.is-visible {
+  opacity: 1;
+
+  transform:
+    translate3d(0, 0, 0);
+}
+
+
+/* =========================================================
+   HOVER LIFT
+========================================================= */
+
+.motion-hover-lift {
+  transition:
+    transform
+      var(--motion-normal)
+      var(--ease-standard),
+
+    box-shadow
+      var(--motion-normal)
+      var(--ease-standard);
+}
+
+
+.motion-hover-lift:hover {
+  transform:
+    translateY(
+      calc(var(--motion-distance-sm) * -0.35)
+    );
+}
+
+
+/* =========================================================
+   AMBIENT GLOW
+========================================================= */
+
+.ambient-glow {
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 999px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(124, 58, 237, 0.22),
+      transparent 70%
+    );
+
+  filter: blur(20px);
+
+  pointer-events: none;
+
+  animation:
+    ambient-float
+    var(--ambient-duration)
+    var(--ease-standard)
+    infinite;
+}
+
+
+@keyframes ambient-float {
+
+  0%,
+  100% {
+    transform:
+      translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform:
+      translate3d(
+        0,
+        calc(var(--ambient-distance) * -1),
+        0
+      );
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+
+    scroll-behavior: auto !important;
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+  }
+}

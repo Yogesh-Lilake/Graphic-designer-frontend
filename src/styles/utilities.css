@@ -1,0 +1,152 @@
+/**
+ * =========================================================
+ * GLOBAL CSS UTILITIES
+ * =========================================================
+ *
+ * Reusable application-wide CSS utilities.
+ *
+ * Examples:
+ * - scrollbar
+ * - scroll progress
+ * - other global visual utilities
+ *
+ * Component-specific styling should remain inside
+ * the component itself.
+ * =========================================================
+ */
+
+
+/* =========================================================
+   THEME SCROLLBAR
+========================================================= */
+
+/*
+ * Reusable application scrollbar.
+ *
+ * Usage:
+ *
+ * <div className="theme-scrollbar overflow-y-auto">
+ *
+ * This implementation intentionally uses CSS instead
+ * of JavaScript.
+ *
+ * Benefits:
+ *
+ * - No React state
+ * - No useEffect
+ * - No scroll listeners
+ * - No manual calculations
+ * - No unnecessary re-renders
+ * - Very low runtime overhead
+ */
+
+
+/* =========================================================
+   Firefox
+========================================================= */
+
+.theme-scrollbar {
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    var(--scrollbar-thumb)
+    var(--scrollbar-track);
+}
+
+
+/* =========================================================
+   Chromium / Chrome / Edge / Safari
+========================================================= */
+
+.theme-scrollbar::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+
+
+/* ---------------------------------------------------------
+   Scrollbar Track
+--------------------------------------------------------- */
+
+.theme-scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+
+/* ---------------------------------------------------------
+   Scrollbar Thumb
+--------------------------------------------------------- */
+
+.theme-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+
+  border-radius: 999px;
+
+  /*
+   * Creates a small visual separation between
+   * the thumb and the track.
+   */
+
+  border: 1px solid var(--scrollbar-track);
+}
+
+
+/* ---------------------------------------------------------
+   Scrollbar Thumb Hover
+--------------------------------------------------------- */
+
+.theme-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+
+/* ---------------------------------------------------------
+   Scrollbar Corner
+--------------------------------------------------------- */
+
+.theme-scrollbar::-webkit-scrollbar-corner {
+  background: var(--scrollbar-track);
+}
+
+
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+/*
+ * Global top-of-page scroll progress indicator.
+ *
+ * The component handles behavior.
+ * Visual styling remains centralized in the
+ * application design system.
+ *
+ * Performance:
+ *
+ * - transform instead of width
+ * - requestAnimationFrame
+ * - will-change: transform
+ * - no React state updates during scrolling
+ */
+
+.scroll-progress {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: var(--scroll-progress-height);
+
+  z-index: 9999;
+
+  pointer-events: none;
+
+  transform: scaleX(0);
+  transform-origin: left center;
+
+  background: var(--scroll-progress-gradient);
+
+  box-shadow: var(--scroll-progress-shadow);
+
+  will-change: transform;
+}

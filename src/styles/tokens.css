@@ -1,0 +1,167 @@
+/**
+ * =========================================================
+ * GLOBAL DESIGN TOKENS
+ * =========================================================
+ *
+ * Shared visual tokens used throughout the application.
+ *
+ * This file contains values only.
+ *
+ * Do not place:
+ * - selectors
+ * - components
+ * - keyframes
+ * - animation implementations
+ *
+ * here.
+ *
+ * Ownership:
+ * Design system / visual language
+ * =========================================================
+ */
+
+:root {
+
+  /* =======================================================
+    BRAND COLORS
+  ======================================================= */
+
+  --color-primary: #7C3AED;
+  --color-primary-hover: #6D28D9;
+  --color-secondary: #A855F7;
+  --color-accent: #06B6D4;
+
+
+  /* =======================================================
+    LAYOUT
+  ======================================================= */
+
+  --header-height: 80px;
+
+
+  /* =======================================================
+    BACKGROUND COLORS
+  ======================================================= */
+
+  --bg-main: #09090B;
+  --bg-surface: #111114;
+  --bg-card: #1F1F23;
+  --bg-hover: #27272A;
+
+
+  /* =======================================================
+    TEXT COLORS
+  ======================================================= */
+
+  --text-primary: #FFFFFF;
+  --text-secondary: #D4D4D8;
+  --text-muted: #A1A1AA;
+  --text-disabled: #71717A;
+
+
+  /* =======================================================
+    BORDER COLORS
+  ======================================================= */
+
+  --border: #27272A;
+  --border-hover: #3F3F46;
+
+
+  /* =======================================================
+    STATUS COLORS
+  ======================================================= */
+
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+
+
+  /* =======================================================
+    TYPOGRAPHY
+  ======================================================= */
+
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+
+
+  /* =======================================================
+    RADIUS
+  ======================================================= */
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+
+
+  /* =======================================================
+    SHADOWS
+  ======================================================= */
+
+  --shadow-card:
+    0 10px 30px rgba(0, 0, 0, .25);
+
+
+  /* =======================================================
+    BUTTONS
+  ======================================================= */
+
+  --button-height: 48px;
+
+  --button-gradient:
+    linear-gradient(
+      135deg,
+      #7C3AED 0%,
+      #8B5CF6 100%
+    );
+
+  --button-shadow:
+    0 8px 24px rgba(124, 58, 237, .28);
+
+  --button-shadow-hover:
+    0 14px 34px rgba(124, 58, 237, .42);
+
+
+  /* =======================================================
+    INTERACTION
+  ======================================================= */
+
+  --focus-ring:
+    0 0 0 3px rgba(124, 58, 237, 0.25);
+
+  --input-height: 48px;
+
+  --button-height-sm: 40px;
+  --button-height-md: 48px;
+  --button-height-lg: 56px;
+
+
+  /* =======================================================
+    SCROLLBAR TOKENS
+  ======================================================= */
+
+  --scrollbar-width: 7px;
+
+  --scrollbar-track: var(--bg-main);
+
+  --scrollbar-thumb: var(--color-primary);
+
+  --scrollbar-thumb-hover: var(--color-secondary);
+
+
+  /* =======================================================
+    SCROLL PROGRESS TOKENS
+  ======================================================= */
+
+  --scroll-progress-height: 3px;
+
+  --scroll-progress-gradient:
+    linear-gradient(
+      90deg,
+      var(--color-primary) 0%,
+      var(--color-secondary) 55%,
+      var(--color-accent) 100%
+    );
+
+  --scroll-progress-shadow:
+    0 0 10px rgba(124, 58, 237, .45);
+}

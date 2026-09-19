@@ -1,0 +1,248 @@
+/**
+ * =========================================================
+ * MOTION DESIGN TOKENS
+ * =========================================================
+ *
+ * Single source of truth for application motion.
+ *
+ * This file contains MOTION VALUES only.
+ *
+ * It does NOT contain:
+ * - animation keyframes
+ * - selectors
+ * - animation components
+ * - React logic
+ * - scroll behavior
+ *
+ * Ownership:
+ *
+ * animation/
+ * ├── motionTokens.css  <- Motion values
+ * ├── motion.css        <- CSS motion implementation
+ * ├── components/       <- React animation primitives
+ * └── hooks/            <- Motion-related behavior
+ *
+ * General visual design tokens remain inside:
+ *
+ * styles/tokens.css
+ *
+ * This separation allows a developer to modify the
+ * motion system without touching the application's
+ * general visual design system.
+ * =========================================================
+ */
+
+:root {
+
+  /* =======================================================
+     MOTION DURATIONS
+  ======================================================= */
+
+  /*
+   * Fast interactions.
+   *
+   * Recommended for:
+   * - icon movement
+   * - hover states
+   * - small UI feedback
+   * - micro interactions
+   */
+
+  --motion-fast: 150ms;
+
+
+  /*
+   * Standard application motion.
+   *
+   * Recommended for:
+   * - buttons
+   * - cards
+   * - menus
+   * - navigation
+   * - common UI transitions
+   */
+
+  --motion-normal: 300ms;
+
+
+  /*
+   * Slow expressive motion.
+   *
+   * Recommended for:
+   * - entrance animations
+   * - hero motion
+   * - large visual transitions
+   * - ambient effects
+   */
+
+  --motion-slow: 500ms;
+
+
+  /* =======================================================
+     MOTION EASING
+  ======================================================= */
+
+  /*
+   * Standard easing.
+   *
+   * General-purpose acceleration/deceleration for
+   * everyday interface interactions.
+   */
+
+   --ease-standard:
+    cubic-bezier(0.4, 0, 0.2, 1);
+
+
+  /*
+   * Enter easing.
+   *
+   * Produces a smooth, slightly expressive entrance.
+   *
+   * Recommended for:
+   * - FadeIn
+   * - Reveal
+   * - SlideIn
+   * - ScaleIn
+   */
+
+   --ease-enter:
+    cubic-bezier(0.16, 1, 0.3, 1);
+
+
+  /*
+   * Exit easing.
+   *
+   * Faster and more decisive than the enter motion.
+   *
+   * Recommended for:
+   * - closing menus
+   * - dismissing modals
+   * - removing elements
+   * - exit transitions
+   */
+
+   --ease-exit:
+      cubic-bezier(0.7, 0, 0.84, 0);
+
+
+  /* =======================================================
+     MOTION DISTANCE
+  ======================================================= */
+
+  /*
+   * Small movement.
+   *
+   * Recommended for:
+   * - hover lift
+   * - icon movement
+   * - subtle button interactions
+   */
+
+  --motion-distance-sm: 12px;
+
+
+  /*
+   * Medium movement.
+   *
+   * Recommended for:
+   * - reveal animations
+   * - slide animations
+   * - card entrance
+   */
+
+  --motion-distance-md: 24px;
+
+
+  /*
+   * Large movement.
+   *
+   * Recommended for:
+   * - hero entrance
+   * - major section reveals
+   * - large visual compositions
+   */
+
+  --motion-distance-lg: 40px;
+
+
+  /* =======================================================
+     MOTION SCALE
+  ======================================================= */
+
+  /*
+   * Small scale change for subtle interaction feedback.
+   */
+
+  --motion-scale-sm: 0.98;
+
+
+  /*
+   * Standard scale used by entrance animations.
+   */
+
+  --motion-scale-md: 0.96;
+
+
+  /*
+   * Larger starting scale for expressive entrances.
+   */
+
+  --motion-scale-lg: 0.92;
+
+
+  /* =======================================================
+     MOTION OPACITY
+  ======================================================= */
+
+  /*
+   * Fully visible state.
+   */
+
+  --motion-opacity-visible: 1;
+
+
+  /*
+   * Default hidden state for fade/reveal animations.
+   */
+
+  --motion-opacity-hidden: 0;
+
+  /* =======================================================
+     AMBIENT
+   ======================================================= */
+
+   --ambient-duration: 8s;
+
+   --ambient-distance: 20px;
+
+  /* =======================================================
+     LEGACY / APPLICATION TRANSITION TOKENS
+  ======================================================= */
+
+  /*
+   * These variables are retained for compatibility with
+   * existing application components.
+   *
+   * Canonical values are defined above.
+   *
+   * This means existing code such as:
+   *
+   * transition-duration: var(--transition-duration);
+   *
+   * continues to work without creating a second source
+   * of truth.
+   */
+
+  --transition-duration:
+    var(--motion-normal);
+
+
+  /*
+   * Existing application easing token.
+   *
+   * Kept as a compatibility alias for existing components.
+   */
+
+  --transition-easing:
+    var(--ease-standard);
+}

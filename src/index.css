@@ -1,341 +1,47 @@
 @import "tailwindcss";
 
-/* ======================
-  DESIGN TOKENS
-========================= */
-:root {
-
-  /* Brand Colors */
-  --color-primary: #7C3AED;
-  --color-primary-hover: #6D28D9;
-  --color-secondary: #A855F7;
-  --color-accent: #06B6D4;
-
-  /* Background Colors */
-  --bg-main: #09090B;
-  --bg-surface: #111114;
-  --bg-card: #1F1F23;
-  --bg-hover: #27272A;
-
-  /* Text Colors */
-  --text-primary: #FFFFFF;
-  --text-secondary: #D4D4D8;
-  --text-muted: #A1A1AA;
-  --text-disabled: #71717A;
-
-  /* Border Colors */
-  --border: #27272A;
-  --border-hover: #3F3F46;
-
-  /* Status Colors */
-  --success: #22C55E;
-  --warning: #F59E0B;
-  --danger: #EF4444;
-  
-  /* Typography */
-  --font-heading: 'Cormorant Garamond', serif;
-  --font-body: 'Inter', sans-serif;
-
-  /* Radius */
-  --radius-sm: 12px;
-  --radius-md: 20px;
-  --radius-lg: 32px;
-
-  /* Shadows */
-  --shadow-card: 0 10px 30px rgba(0,0,0, .25);
-
-  /* Buttons */
-
-  --button-height: 48px;
-
-  --button-gradient:
-    linear-gradient(
-      135deg,
-      #7C3AED 0%,
-      #8B5CF6 100%
-    );
-
-  --button-shadow:
-    0 8px 24px rgba(124, 58, 237, .28);
-
-  --button-shadow-hover:
-    0 14px 34px rgba(124, 58, 237, .42);
-
-
-  /* =======================================================
-     MOTION
-  ======================================================= */
-
-  /*
-   * Shared application transition duration.
-   *
-   * Used by:
-   * - Navbar
-   * - Buttons
-   * - Cards
-   * - Menus
-   * - Interactive UI
-   */
-
-  --transition-duration: 300ms;
-
-
-  /*
-   * Shared application easing.
-   *
-   * Provides a smooth acceleration/deceleration
-   * suitable for general UI interactions.
-   */
-
-  --transition-easing:
-    cubic-bezier(0.4, 0, 0.2, 1);
-
-
-  /* =======================================================
-     SCROLLBAR
-  ======================================================= */
-
-  --scrollbar-width: 7px;
-
-  --scrollbar-track: var(--bg-main);
-
-  --scrollbar-thumb: var(--color-primary);
-
-  --scrollbar-thumb-hover: var(--color-secondary);
-
-
-  /* =======================================================
-     SCROLL PROGRESS
-  ======================================================= */
-
-  --scroll-progress-height: 3px;
-
-  --scroll-progress-gradient:
-    linear-gradient(
-      90deg,
-      var(--color-primary) 0%,
-      var(--color-secondary) 55%,
-      var(--color-accent) 100%
-    );
-
-  --scroll-progress-shadow:
-    0 0 10px rgba(124, 58, 237, .45);
-}
-
-
-/* ======================================
-  GLOBAL BASE
-========================================*/
-
-@layer base {
-
-  *,
-  *::before,
-  *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    background: var(--bg-main);
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    overflow-x: hidden;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  html, body, #root {
-    min-height: 100%;
-  }
-
-  img {
-    display: block;
-    max-width: 100%;
-  }
-
-  button {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font: inherit;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  ul,
-  ol {
-    list-style: none;
-  }
-}
-
-
-/* =========================================================
-   SHARED MOTION
-========================================================= */
-
 /*
- * Global reusable transition configuration.
+ * =========================================================
+ * GLOBAL CSS ENTRY POINT
+ * =========================================================
  *
- * Components decide WHICH property should animate.
+ * This file intentionally contains no design tokens,
+ * component styles, animation keyframes, or global rules.
  *
- * Example:
+ * It only assembles the application's global CSS layers.
  *
- * transition-transform theme-transition
+ * CSS ownership:
  *
- * or:
+ * - styles/tokens.css
+ *      Global design tokens
  *
- * theme-transition
+ * - styles/globals.css
+ *      Global browser/base/accessibility styles
  *
- * The duration and easing are controlled centrally
- * through the design tokens above.
+ * - styles/utilities.css
+ *      Global reusable CSS utilities
+ *
+ * - animation/motionTokens.css
+ *      Motion-specific design tokens
+ *
+ * - animation/motion.css
+ *      Animation primitives and motion utilities
+ *
+ * Keeping this file as an entry point prevents it from
+ * becoming a large global stylesheet that multiple teams
+ * need to modify.
+ * =========================================================
  */
 
-.theme-transition {
-  transition-duration: var(--transition-duration);
-  transition-timing-function: var(--transition-easing);
-}
+/* ========================================================
+   DESIGN TOKENS
+   ======================================================== */ 
+@import "./styles/tokens.css";
+@import "./styles/globals.css";
+@import "./styles/utilities.css";
 
-
-/* =========================================================
-   THEME SCROLLBAR
-========================================================= */
-
-/*
- * Reusable application scrollbar.
- *
- * Usage:
- *
- * <div className="theme-scrollbar overflow-y-auto">
- *
- * This implementation intentionally uses CSS instead
- * of JavaScript.
- *
- * Benefits:
- *
- * - No React state
- * - No useEffect
- * - No scroll listeners
- * - No manual calculations
- * - No unnecessary re-renders
- * - Very low runtime overhead
- */
-
-
-/* =========================================================
-   Firefox
-========================================================= */
-
-.theme-scrollbar {
-  scrollbar-width: thin;
-
-  scrollbar-color:
-    var(--scrollbar-thumb)
-    var(--scrollbar-track);
-}
-
-
-/* =========================================================
-   Chromium / Chrome / Edge / Safari
-========================================================= */
-
-.theme-scrollbar::-webkit-scrollbar {
-  width: var(--scrollbar-width);
-  height: var(--scrollbar-width);
-}
-
-
-/* ---------------------------------------------------------
-   Scrollbar Track
---------------------------------------------------------- */
-
-.theme-scrollbar::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
-
-
-/* ---------------------------------------------------------
-   Scrollbar Thumb
---------------------------------------------------------- */
-
-.theme-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--scrollbar-thumb);
-
-  border-radius: 999px;
-
-  /*
-   * Creates a small visual separation between
-   * the thumb and the track.
-   */
-  border: 1px solid var(--scrollbar-track);
-}
-
-
-/* ---------------------------------------------------------
-   Scrollbar Thumb Hover
---------------------------------------------------------- */
-
-.theme-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: var(--scrollbar-thumb-hover);
-}
-
-
-/* ---------------------------------------------------------
-   Scrollbar Corner
---------------------------------------------------------- */
-
-.theme-scrollbar::-webkit-scrollbar-corner {
-  background: var(--scrollbar-track);
-}
-
-
-/* =========================================================
-   SCROLL PROGRESS
-========================================================= */
-
-/*
- * Global top-of-page scroll progress indicator.
- *
- * The component handles behaviour.
- * Visual styling remains centralized in the
- * application design system.
- *
- * Performance:
- *
- * - transform instead of width
- * - requestAnimationFrame
- * - will-change: transform
- * - no React state updates during scrolling
- */
-
-.scroll-progress {
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: var(--scroll-progress-height);
-
-  z-index: 9999;
-
-  pointer-events: none;
-
-  transform: scaleX(0);
-  transform-origin: left center;
-
-  background: var(--scroll-progress-gradient);
-
-  box-shadow: var(--scroll-progress-shadow);
-
-  will-change: transform;
-}
+/* ========================================================
+   MOTION SYSTEM
+   ======================================================== */ 
+@import "./animation/motionTokens.css";
+@import "./animation/motion.css";
